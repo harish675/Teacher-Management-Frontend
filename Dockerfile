@@ -6,6 +6,14 @@ FROM node:18-alpine AS builder
 # Set working directory
 WORKDIR /app
 
+# Accept build arguments
+ARG VITE_API_BASE_URL
+ARG VITE_APP_TITLE
+
+# Set as environment variables for the build
+ENV VITE_API_BASE_URL=$VITE_API_BASE_URL
+ENV VITE_APP_TITLE=$VITE_APP_TITLE
+
 # Copy package files
 COPY package*.json ./
 
